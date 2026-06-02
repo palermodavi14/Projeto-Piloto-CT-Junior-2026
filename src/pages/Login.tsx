@@ -1,4 +1,5 @@
 import "../login.css"
+import { Envelope, Key } from "phosphor-react";
 
 import Button from "../components/Button";
 import logo from "../assets/logoemail.png";
@@ -17,10 +18,16 @@ export function Login (){
             />
 
             <form className="login-form">
-            <input type="email" placeholder= "Seu ct-mail" className="login-input" />
+        <div className="input-container">
+            <Envelope size={ 24 } />
+            <input type="email" placeholder= "Seu CT-mail" className="login-input" />
+        </div>
+        <div className="input-container">
+            <Key size={ 24 } />
             <input type="password" placeholder= "Sua senha" className="login-input" />
+        </div>
             <Button texto="Entrar" />
-
+        
             <p>
                 <a href="/cadastro" className="cadastro-link">
                     Cadastre-se
