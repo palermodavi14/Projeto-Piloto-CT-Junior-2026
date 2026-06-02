@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router"
 
 import { Login } from "../pages/Login.tsx"
 import { Cadastro } from "../pages/Cadastro.tsx"
+import { NotFound } from "../pages/NotFound.tsx"
 
 export function AppRoutes(){
 
@@ -13,7 +14,7 @@ export function AppRoutes(){
             
 
             
-
+            <Route path="*" index element= {<NotFound/>} />
         </Routes>
     )
 }
