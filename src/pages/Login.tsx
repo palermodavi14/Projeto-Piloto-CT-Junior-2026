@@ -1,83 +1,143 @@
-import "../login.css"
 import { Envelope, Key } from "phosphor-react";
-
 import Button from "../components/Button";
 import logo from "../assets/logoemail.png";
 
-import { Controller, useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 type FormData = {
-    email: string
-    senha: string   
-}
+  email: string;
+  senha: string;
+};
 
 const schema = yup.object({
-    email: yup.string().required("Email é obrigatório"),
-    senha: yup.string().required("Senha é obrigatório").min(6, "A senha precisa ter no mínimo 6 caracteres"),
-})
+  email: yup.string().required("Email é obrigatório"),
+  senha: yup
+    .string()
+    .required("Senha é obrigatório")
+    .min(6, "A senha precisa ter no mínimo 6 caracteres"),
+});
 
-export function Login (){
-    const { control, handleSubmit, formState: { errors } } = useForm<FormData>({ defaultValues: {
-        email: "",
-        senha: "",
+export function Login() {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    defaultValues: {
+      email: "",
+      senha: "",
     },
-    resolver: yupResolver(schema)
-    }) 
+    resolver: yupResolver(schema),
+  });
 
-    function onSubmit(data:FormData){
-        console.log(data)
-    }
+  function onSubmit(data: FormData) {
+    console.log(data);
+  }
 
-    return (
-        <div className="login-page">
-        <div className="login-container">
+  return (
+    <div className="min-h-screen flex justify-center items-center bg-[#FF8E3D]">
+      <div className="w-[800px] h-[500px] bg-black rounded-2xl flex flex-col items-center justify-center gap-8 p-12">
+
+        <img
+          src={logo}
+          alt="Logo"
+          className="w-60 h-auto"
+        />
+
+        <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full flex flex-col items-center gap-6 px-6">
         
-            
-            <img
-                src= { logo }
-                alt="Logo"
-                className="login-logo"
-            />
+          <Controller
+            control={control}
+            name="email"
+            render={({ field }) => (
+              <div className="flex items-center gap-3 w-full">
+                <Envelope
+                  size={24}
+                  className="text-[#FF8E3D] shrink-0"
+                />
 
-            <form 
-            onSubmit={handleSubmit(onSubmit)}
-            className="login-form">
+                <input
+                  type="email"
+                  placeholder="Seu CT-mail"
+                  {...field}
+                  className="
+                    w-full
+                    py-3
+                    bg-transparent
+                    text-white
+                    text-base
+                    border-0
+                    border-b-2
+                    border-[#FF8E3D]
+                    outline-none
+                    focus:outline-none
+                    focus:ring-0
+                  "
+                />
+              </div>
+            )}
+          />
 
-                <Controller 
-                control={ control }
-                name="email"
-                render={({ field }) => (<div className="input-container">
-            <Envelope size={ 24 } />
-            <input type="email" placeholder= "Seu CT-mail" className="login-input" {...field} />
-            </div>)} />
-            {errors.email?.message && <span className="error">{errors.email.message}</span>}
+          {errors.email?.message && (
+            <span className="text-red-500 text-sm w-full">
+              {errors.email.message}
+            </span>
+          )}
 
-
-
-        <Controller
+          <Controller
             control={control}
             name="senha"
-            render={({field}) =>
-            (<div className="input-container">
-            <Key size={ 24 } />
-            <input type="password" placeholder= "Sua senha" className="login-input" {...field} />
-            </div>)} />
+            render={({ field }) => (
+              <div className="flex items-center gap-3 w-full">
+                <Key
+                  size={24}
+                  className="text-[#FF8E3D] shrink-0"
+                />
 
-            {errors.senha?.message && <span className="error">{errors.senha.message}</span>}
-        
-            <Button texto="Entrar" />
-        
-            <p>
-                <a href="/cadastro" className="cadastro-link">
-                    Cadastre-se
-                </a>
-            </p>
+                <input
+                  type="password"
+                  placeholder="Sua senha"
+                  {...field}
+                  className="
+                    w-full
+                    py-3
+                    bg-transparent
+                    text-white
+                    text-base
+                    border-0
+                    border-b-2
+                    border-[#FF8E3D]
+                    outline-none
+                    focus:outline-none
+                    focus:ring-0
+                  "
+                />
+              </div>
+            )}
+          />
 
+          {errors.senha?.message && (
+            <span className="text-red-500 text-sm w-full">
+              {errors.senha.message}
+            </span>
+          )}
 
-            </form>
-        </div>
-        </div>
-    );
+          <Button texto="Entrar" />
+
+          <p>
+            <a
+              href="/cadastro"
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              Cadastre-se
+            </a>
+          </p>
+        </form>
+      </div>
+    </div>
+  );
 }
