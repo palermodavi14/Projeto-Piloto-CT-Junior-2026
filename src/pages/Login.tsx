@@ -26,8 +26,8 @@ export function Login() {
     formState: { errors },
   } = useForm<FormData>({
     defaultValues: {
-      email: "",
-      senha: "",
+    email: "",
+    senha: "",
     },
     resolver: yupResolver(schema),
   });
@@ -38,7 +38,7 @@ export function Login() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-[#FF8E3D]">
-      <div className="w-[800px] h-[500px] bg-black rounded-2xl flex flex-col items-center justify-center gap-8 p-12">
+      <div className="w-200 h-125 bg-black rounded-2xl flex flex-col items-center justify-center gap-8 p-12">
 
         <img
           src={logo}
@@ -48,7 +48,7 @@ export function Login() {
 
         <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full flex flex-col items-center gap-6 px-6">
+        className="w-95 flex flex-col items-center gap-6 px-6">
         
           <Controller
             control={control}
