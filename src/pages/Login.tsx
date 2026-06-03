@@ -3,34 +3,37 @@ import Button from "../components/Button";
 import logo from "../assets/logoemail.png";
 
 import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
-type FormData = {
-  email: string;
-  senha: string;
-};
 
-const schema = yup.object({
-  email: yup.string()email.required("Email é obrigatório"),
-  senha: yup
-    .string()
-    .required("Senha é obrigatório")
-    .min(6, "A senha precisa ter no mínimo 6 caracteres"),
-});
+const schema = z
+  .object({
+    email: z
+      .string()
+      .min(1, "Email é obrigatório")
+      .email("Email inválido"),
 
-export function Login() {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
-    defaultValues: {
-    email: "",
-    senha: "",
-    },
-    resolver: yupResolver(schema),
-  });
+    senha: z
+      .string()
+      .min(6, "A senha precisa ter no mínimo 6 caracteres"),
+
+  })
+
+  type FormData = z.infer<typeof schema>;
+
+  export function Login() {
+    const {
+      control,
+      handleSubmit,
+      formState: { errors },
+    } = useForm<FormData>({
+      defaultValues: {
+        email: "",
+        senha: "",
+      },
+      resolver: zodResolver(schema),
+    });
 
   function onSubmit(data: FormData) {
     console.log(data);
