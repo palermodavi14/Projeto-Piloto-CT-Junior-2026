@@ -55,22 +55,29 @@ export function Cadastro() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-[#FF8E3D]">
-      <div className="w-[800px] min-h-[600px] bg-black rounded-2xl flex flex-col items-center justify-center gap-8 p-12">
+      <div className="w-77 lg:w-200 h-140 lg:min-h-150 bg-black rounded-2xl flex flex-col items-center justify-center gap-8 p-12">
         <img
           src={logo}
           alt="Logo"
-          className="w-60 h-auto"
+          className="w-36 sm:w-40 md:w-60 h-auto"
         />
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-95 flex flex-col gap-4 px-6"
+          className="w-full
+                  max-w-[400px]
+                  flex
+                  flex-col
+                  items-center
+                  gap-6
+                  justify-center
+                  items-center"
         >
           <Controller
             control={control}
             name="user"
             render={({ field }) => (
-              <div className="flex items-center gap-3 w-full">
+              <div className="flex items-center justify-center gap-3 w-full">
                 <User
                   size={24}
                   className="text-[#FF8E3D] shrink-0"
@@ -81,7 +88,10 @@ export function Cadastro() {
                   placeholder="Seu Nome"
                   {...field}
                   className="
-                    w-full
+                    w-60
+                    items-center
+                    justify-center
+                    lg:w-full
                     py-3
                     bg-transparent
                     text-white
@@ -108,7 +118,7 @@ export function Cadastro() {
             control={control}
             name="email"
             render={({ field }) => (
-              <div className="flex items-center gap-3 w-full">
+              <div className="flex items-center justify-center gap-3 w-full">
                 <Envelope
                   size={24}
                   className="text-[#FF8E3D] shrink-0"
@@ -119,7 +129,10 @@ export function Cadastro() {
                   placeholder="Seu CT-mail"
                   {...field}
                   className="
-                    w-full
+                    w-60
+                    items-center
+                    justify-center
+                    lg:w-full
                     py-3
                     bg-transparent
                     text-white
@@ -146,7 +159,7 @@ export function Cadastro() {
             control={control}
             name="senha"
             render={({ field }) => (
-              <div className="flex items-center gap-3 w-full">
+              <div className="flex items-center justify-center gap-3 w-full">
                 <Key
                   size={24}
                   className="text-[#FF8E3D] shrink-0"
@@ -157,7 +170,10 @@ export function Cadastro() {
                   placeholder="Sua senha"
                   {...field}
                   className="
-                    w-full
+                    w-60
+                    items-center
+                    justify-center
+                    lg:w-full
                     py-3
                     bg-transparent
                     text-white
@@ -184,7 +200,7 @@ export function Cadastro() {
             control={control}
             name="confirmarSenha"
             render={({ field }) => (
-              <div className="flex items-center gap-3 w-full">
+              <div className="flex items-center justify-center gap-3 w-full">
                 <Check
                   size={24}
                   className="text-[#FF8E3D] shrink-0"
@@ -195,7 +211,10 @@ export function Cadastro() {
                   placeholder="Confirmar senha"
                   {...field}
                   className="
-                    w-full
+                    w-60
+                    items-center
+                    justify-center
+                    lg:w-full
                     py-3
                     bg-transparent
                     text-white

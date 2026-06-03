@@ -62,7 +62,7 @@ const schema = z
             control={control}
             name="email"
             render={({ field }) => (
-              <div className="flex items-center gap-3 w-full">
+              <div className="flex items-center justify-center gap-3 w-full">
                 <Envelope
                   size={24}
                   className="text-[#FF8E3D] shrink-0"
@@ -73,7 +73,10 @@ const schema = z
                   placeholder="Seu CT-mail"
                   {...field}
                   className="
-                    w-full
+                    w-60
+                    items-center
+                    justify-center
+                    lg:w-full
                     py-3
                     bg-transparent
                     text-white
@@ -100,7 +103,7 @@ const schema = z
             control={control}
             name="senha"
             render={({ field }) => (
-              <div className="flex items-center gap-3 w-full">
+              <div className="flex items-center justify-center gap-3 w-full">
                 <Key
                   size={24}
                   className="text-[#FF8E3D] shrink-0"
@@ -111,7 +114,10 @@ const schema = z
                   placeholder="Sua senha"
                   {...field}
                   className="
-                    w-full
+                    w-60
+                    items-center
+                    justify-center
+                    lg:w-full
                     py-3
                     bg-transparent
                     text-white
