@@ -41,12 +41,12 @@ const schema = z
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-[#FF8E3D]">
-      <div className="w-200 h-125 bg-black rounded-2xl flex flex-col items-center justify-center gap-8 p-12">
+      <div className="w-77 lg:w-200 h-100 lg:h-125 bg-black rounded-2xl flex flex-col items-center justify-center gap-8 p-12">
 
         <img
           src={logo}
           alt="Logo"
-          className="w-32 sm:w-40 md:w-60 h-auto"
+          className="w-36 sm:w-40 md:w-60 h-auto"
         />
 
         <form

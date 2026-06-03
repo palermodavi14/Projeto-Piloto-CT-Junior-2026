@@ -5,8 +5,10 @@ type ButtonProps = {
 function Button({ texto }: ButtonProps) {
   return (
     <button className="
-        w-48
-        h-12
+        w-36
+        h-8
+        lg:w-48
+        lg:h-12
         rounded-lg
         bg-[#FF8E3D]
         text-white
