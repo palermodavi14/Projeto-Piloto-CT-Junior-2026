@@ -12,7 +12,7 @@ type FormData = {
 };
 
 const schema = yup.object({
-  email: yup.string().required("Email é obrigatório"),
+  email: yup.string()email.required("Email é obrigatório"),
   senha: yup
     .string()
     .required("Senha é obrigatório")
