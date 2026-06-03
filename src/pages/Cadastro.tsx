@@ -11,12 +11,13 @@ import { z } from "zod";
 
 const schema = z
   .object({
-    user: z.string().min(1, "Nome é obrigatório"),
+    user: z.
+    string()
+    .min(1, "Nome é obrigatório"),
 
     email: z
-      .string()
-      .min(1, "Email é obrigatório")
-      .email("Email inválido"),
+      .email("Email inválido")
+      .min(1, "Email é obrigatório"),
 
     senha: z
       .string()

@@ -10,9 +10,9 @@ import { z } from "zod";
 const schema = z
   .object({
     email: z
-      .string()
-      .min(1, "Email é obrigatório")
-      .email("Email inválido"),
+
+      .email("Email inválido")
+      .min(1, "Email é obrigatório"),
 
     senha: z
       .string()
@@ -46,12 +46,17 @@ const schema = z
         <img
           src={logo}
           alt="Logo"
-          className="w-60 h-auto"
+          className="w-32 sm:w-40 md:w-60 h-auto"
         />
 
         <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-95 flex flex-col items-center gap-6 px-6">
+        className="w-full
+                  max-w-[400px]
+                  flex
+                  flex-col
+                  items-center
+                  gap-6">
         
           <Controller
             control={control}
@@ -86,7 +91,7 @@ const schema = z
           />
 
           {errors.email?.message && (
-            <span className="text-red-500 text-sm w-full">
+            <span className="text-red-500 text-sm flex items-center justify-center w-full">
               {errors.email.message}
             </span>
           )}
@@ -124,7 +129,7 @@ const schema = z
           />
 
           {errors.senha?.message && (
-            <span className="text-red-500 text-sm w-full">
+            <span className="text-red-500 flex items-center justify-center text-sm w-full">
               {errors.senha.message}
             </span>
           )}
