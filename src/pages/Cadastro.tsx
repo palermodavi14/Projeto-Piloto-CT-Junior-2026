@@ -70,8 +70,7 @@ export function Cadastro() {
                   flex-col
                   items-center
                   gap-6
-                  justify-center
-                  items-center"
+                  justify-center"
         >
           <Controller
             control={control}
