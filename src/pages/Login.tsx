@@ -1,10 +1,12 @@
-import { Envelope, Key } from "phosphor-react";
+import { Envelope, Key, Eye, EyeSlash, Password } from "phosphor-react";
 import Button from "../components/Button";
 import logo from "../assets/logoemail.png";
+import { useState } from "react";
 
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { api } from "../services/api";
 
 
 const schema = z
@@ -14,7 +16,7 @@ const schema = z
       .email("Email inválido")
       .min(1, "Email é obrigatório"),
 
-    senha: z
+    password: z
       .string()
       .min(6, "A senha precisa ter no mínimo 6 caracteres"),
 
@@ -30,14 +32,28 @@ const schema = z
     } = useForm<FormData>({
       defaultValues: {
         email: "",
-        senha: "",
+        password: "",
       },
       resolver: zodResolver(schema),
     });
 
-  function onSubmit(data: FormData) {
-    console.log(data);
+  async function onSubmit(data: FormData) {
+    try {const response = await api.post("/login", {
+      email: data.email,
+      password: data.password,
+    });
+
+    const token = response.data.token;
+
+    localStorage.setItem("token", token);
+
+    console.log("Login realizado!");
+    console.log(token);
+
+  } catch (error: any) {
+  alert("Email ou senha inválidos");
   }
+}
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-[#FF8E3D]">
@@ -101,7 +117,7 @@ const schema = z
 
           <Controller
             control={control}
-            name="senha"
+            name="password"
             render={({ field }) => (
               <div className="flex items-center justify-center gap-3 w-full">
                 <Key
@@ -134,9 +150,9 @@ const schema = z
             )}
           />
 
-          {errors.senha?.message && (
+          {errors.password?.message && (
             <span className="text-red-500 flex items-center justify-center text-sm w-full">
-              {errors.senha.message}
+              {errors.password.message}
             </span>
           )}
 
