@@ -1,7 +1,7 @@
-import { Envelope, Key, Eye, EyeSlash, Password } from "phosphor-react";
+import { Envelope, Key, } from "phosphor-react";
 import Button from "../components/Button";
 import logo from "../assets/logoemail.png";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,6 +25,7 @@ const schema = z
   type FormData = z.infer<typeof schema>;
 
   export function Login() {
+    const navigate = useNavigate();
     const {
       control,
       handleSubmit,
@@ -50,10 +51,12 @@ const schema = z
     console.log("Login realizado!");
     console.log(token);
 
+    localStorage.setItem("token", token);
+    navigate("/home");
+
   } catch (error: any) {
   alert("Email ou senha inválidos");
-  }
-}
+  }}
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-[#FF8E3D]">
