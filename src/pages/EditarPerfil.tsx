@@ -4,7 +4,7 @@ import { Sidebar } from "../components/Sidebar";
 
 
 
-export function Home() {
+export function Editar() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,11 +31,11 @@ export function Home() {
                         gap-3
                         text-[28px]
                         font-normal
-                        text-black mb-8">Entrada</h1>
+                        text-black mb-8">Editar Perfil</h1>
 
           <div className="grid grid-cols-[2fr_1fr_3fr_1fr] gap-4 text-[#ff6b00] text-xl mb-4">
-            <span>Enviado por</span>
-            <span>Nome</span>
+            <span>Apagar:</span>
+            <span>Para:</span>
             <span>Título</span>
             <span>Visto</span>
           </div>
