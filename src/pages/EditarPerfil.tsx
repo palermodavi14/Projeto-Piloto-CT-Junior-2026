@@ -40,7 +40,7 @@ export function Editar() {
             <span>Visto</span>
           </div>
 
-          {/* Lista de emails virá aqui */}
+          {}
         </div>
       </div>
     </div>
