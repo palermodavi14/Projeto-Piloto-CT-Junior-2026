@@ -1,7 +1,6 @@
 import { SignOut, User, PaperPlaneTilt, Envelope,} from "phosphor-react";
 import logo from "../assets/logopreta.png";
 import { SidebarButton } from "./SidebarButton";
-import { Navigate } from "react-router";
 import { useNavigate, useLocation } from "react-router-dom";
 
 
@@ -9,6 +8,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 export function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  function handleLogout() {
+  localStorage.removeItem("token");
+  navigate("/");
+}
   return (
     <div className=" w-[320px]
                     h-[650px]
@@ -60,7 +64,7 @@ export function Sidebar() {
         <SidebarButton
           icon={<SignOut size={36} />}
           text="Sair"
-          onClick={() => navigate("/")}
+          onClick={handleLogout}
         />
       </div>
     </div>

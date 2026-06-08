@@ -113,7 +113,7 @@ const schema = z
           />
 
           {errors.email?.message && (
-            <span className="text-red-500 text-sm flex items-center justify-center w-full">
+            <span className="text-red-500 text-sm flex items-center w-full">
               {errors.email.message}
             </span>
           )}
@@ -154,7 +154,7 @@ const schema = z
           />
 
           {errors.password?.message && (
-            <span className="text-red-500 flex items-center justify-center text-sm w-full">
+            <span className="text-red-500 flex items-center text-sm w-full">
               {errors.password.message}
             </span>
           )}

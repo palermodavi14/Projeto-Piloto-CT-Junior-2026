@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../components/Sidebar";
+import { EmailRow } from "../components/Emailrow";
 
 
 
@@ -14,6 +15,45 @@ export function Home() {
       navigate("/");
     }
   }, []);
+
+  const emails = [
+  {
+    remetente: "sodre@ctjunior.com.br",
+    nome: "Sodré",
+    titulo: "Olá, cap.",
+    visto: true,
+  },
+  {
+    remetente: "enrico.massariol@ctjunior.com.br",
+    nome: "Enrico",
+    titulo: "Qual o nome do cod que você s...",
+    visto: true,
+  },
+  {
+    remetente: "yuri@gmail.com",
+    nome: "Yuri",
+    titulo: "Não estarei contigo amanhã.",
+    visto: false,
+  },
+  {
+    remetente: "arthur@ctjunior.com.br",
+    nome: "Arthur",
+    titulo: "CT JUNIOR >>> Call of Duty.",
+    visto: true,
+  },
+  {
+    remetente: "soap@gmail.com",
+    nome: "Soap",
+    titulo: "Warzone amanhã?",
+    visto: false,
+  },
+  {
+    remetente: "ghost@gmail.com",
+    nome: "Ghost",
+    titulo: "Para de comprar skin.",
+    visto: true,
+  },
+];
 
   return (
     <div className="min-h-screen min-w-screen bg-[#dcdcdc] p-8 flex justify-center items-center">
@@ -31,16 +71,30 @@ export function Home() {
                         gap-3
                         text-[28px]
                         font-normal
+                        px-2
                         text-black mb-8">Entrada</h1>
 
+
+          <div className="px-6">
           <div className="grid grid-cols-[2fr_1fr_3fr_1fr] gap-4 text-[#ff6b00] text-xl mb-4">
-            <span>Enviado por</span>
-            <span>Nome</span>
-            <span>Título</span>
-            <span>Visto</span>
+            <span>Enviado por:</span>
+            <span>Nome:</span>
+            <span>Título:</span>
+            <span>Visto:</span>
           </div>
 
-          {/* Lista de emails virá aqui */}
+          <div className="flex flex-col gap-4">
+  {emails.map((email, index) => (
+    <EmailRow
+      key={index}
+      remetente={email.remetente}
+      nome={email.nome}
+      titulo={email.titulo}
+      visto={email.visto}
+    />
+  ))}
+</div>
+</div>
         </div>
       </div>
     </div>

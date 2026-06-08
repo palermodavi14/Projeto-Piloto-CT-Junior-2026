@@ -36,7 +36,7 @@ const schema = z
   type FormData = z.infer<typeof schema>;
 
 export function Cadastro() {
-  const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [mostrarSenha,] = useState(false);
   const {
     control,
     handleSubmit,
