@@ -2,11 +2,12 @@ import { Envelope, Key, User, Check, Eye, EyeSlash } from "phosphor-react";
 import Button from "../components/Button";
 import logo from "../assets/logoemail.png";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { api } from "../services/api";
+import { toast } from "react-toastify";
 
 
 
@@ -36,6 +37,7 @@ const schema = z
   type FormData = z.infer<typeof schema>;
 
 export function Cadastro() {
+  const navigate = useNavigate();
   const [mostrarSenha,] = useState(false);
   const {
     control,
@@ -59,11 +61,14 @@ export function Cadastro() {
       password: data.password,
     });
 
+    toast.success("Cadastro realizado com sucesso!");
     console.log("Usuário cadastrado!");
     console.log(response.data);
+    navigate("/");
 
   } catch (error) {
     console.error("Erro ao cadastrar:", error);
+    toast.error("Não foi possível realizar o cadastro.");
   }
 }
 
