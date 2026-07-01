@@ -1,4 +1,4 @@
-import { Envelope, Key, } from "phosphor-react";
+import { Envelope, Eye, Key, } from "phosphor-react";
 import Button from "../components/Button";
 import logo from "../assets/logoemail.png";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { api } from "../services/api";
+import { useState } from "react";
 
 
 const schema = z
@@ -26,6 +27,7 @@ const schema = z
 
   export function Login() {
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
     const {
       control,
       handleSubmit,
@@ -148,7 +150,7 @@ const schema = z
                     focus:outline-none
                     focus:ring-0
                   "
-                />
+                /><Eye className="bg-white"/>
               </div>
             )}
           />

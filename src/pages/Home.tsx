@@ -56,7 +56,7 @@ export function Home() {
 ];
 
   return (
-    <div className="min-h-screen min-w-screen bg-[#dcdcdc] p-8 flex justify-center items-center">
+    <div className="min-h-screen min-w-screen bg-[#dcdcdc] p-8 flex justify-center items-center px-2">
       <div className="flex gap-8">
         <Sidebar />
 
@@ -66,33 +66,38 @@ export function Home() {
         bg-white
         rounded-3xl
         shadow-md
-        p-8">
-          <h1 className="flex items-center
+        p-8 
+        flex
+        flex-col">
+
+
+
+          <div className="w-[940px] mx-auto">
+
+            <h1 className="
                         gap-3
                         text-[28px]
                         font-normal
-                        px-2
-                        text-black mb-8">Entrada</h1>
+                        text-black mb-8 ml-10">Entrada</h1>
 
-
-          <div className="px-6">
-          <div className="grid grid-cols-[2fr_1fr_3fr_1fr] gap-4 text-[#ff6b00] text-xl mb-4">
-            <span>Enviado por:</span>
-            <span>Nome:</span>
-            <span>Título:</span>
-            <span>Visto:</span>
+          <div className="grid grid-cols-[2fr_1fr_3fr_1fr] text-[#ff6b00] text-xl mb-4">
+                    <span className="text-center">Enviado por:</span>
+                    <span className="text-center">Nome:</span>
+                    <span className="text-center">Título:</span>
+                    <span className="">Visto:</span>
           </div>
-
-          <div className="flex flex-col gap-4">
+          <div className="flex-1 flex items-center justify-center">
+          <div className="flex flex-col mx-auto gap-4 ">
   {emails.map((email, index) => (
     <EmailRow
       key={index}
-      remetente={email.remetente}
-      nome={email.nome}
+      coluna1={email.remetente}
+      coluna2={email.nome}
       titulo={email.titulo}
       visto={email.visto}
     />
   ))}
+</div>
 </div>
 </div>
         </div>

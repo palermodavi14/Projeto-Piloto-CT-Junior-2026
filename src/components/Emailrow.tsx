@@ -1,21 +1,20 @@
 type Props = {
-  remetente: string;
-  nome: string;
+  coluna1: string;
+  coluna2: string;
   titulo: string;
   visto: boolean;
 };
 
 export function EmailRow({
-  remetente,
-  nome,
+  coluna1,
+  coluna2,
   titulo,
   visto,
 }: Props) {
   return (
     <div
       className="
-        w-[95%]
-        mx-auto
+        w-full
         grid
         grid-cols-[2fr_1fr_3fr_1fr]
         h-14
@@ -26,11 +25,11 @@ export function EmailRow({
       "
     >
       <div className="px-4 h-full flex items-center justify-center">
-        {remetente}
+        {coluna1}
       </div>
 
       <div className="px-4 h-full flex items-center justify-center border-l-2 border-[#FF6B00]">
-        {nome}
+        {coluna2}
       </div>
 
       <div className="px-4 h-full flex items-center justify-center border-l-2 border-[#FF6B00] truncate">
