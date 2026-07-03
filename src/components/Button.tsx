@@ -1,10 +1,12 @@
 type ButtonProps = {
   texto: string;
+  className?: string;
 };
 
-function Button({ texto }: ButtonProps) {
+function Button({ texto, className = "" }: ButtonProps) {
   return (
-    <button className="
+    <button
+      className={`
         w-36
         h-8
         lg:w-48
@@ -16,7 +18,10 @@ function Button({ texto }: ButtonProps) {
         cursor-pointer
         transition-opacity
         hover:opacity-90
-      " type="submit">
+        ${className}
+      `}
+      type="submit"
+    >
       {texto}
     </button>
   );

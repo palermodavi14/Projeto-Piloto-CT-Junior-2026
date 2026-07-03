@@ -38,7 +38,8 @@ const schema = z
 
 export function Cadastro() {
   const navigate = useNavigate();
-  const [mostrarSenha,] = useState(false);
+const [showPassword, setShowPassword] = useState(false);
+const [showConfirmacao, setShowConfirmacao] = useState(false);
   const {
     control,
     handleSubmit,
@@ -174,39 +175,58 @@ export function Cadastro() {
           )}
 
           <Controller
-            control={control}
-            name="password"
-            render={({ field }) => (
-              <div className="flex items-center justify-center gap-3 w-full">
-                <Key
-                  size={24}
-                  className="text-[#FF8E3D] shrink-0"
-                />
+  control={control}
+  name="password"
+  render={({ field }) => (
+    <div className="flex items-center justify-center gap-3 w-full">
+      <Key
+        size={24}
+        className="text-[#FF8E3D] shrink-0"
+      />
 
-                <input
-                  type={mostrarSenha ? "text" : "password"}
-                  placeholder="Sua senha"
-                  {...field}
-                  className="
-                    w-60
-                    items-center
-                    justify-center
-                    lg:w-full
-                    py-3
-                    bg-transparent
-                    text-white
-                    text-base
-                    border-0
-                    border-b-2
-                    border-[#FF8E3D]
-                    outline-none
-                    focus:outline-none
-                    focus:ring-0
-                  "
-                />
-              </div>
-            )}
-          />
+      <div className="relative w-60 lg:w-full">
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="Sua senha"
+          {...field}
+          className="
+            w-full
+            py-3
+            pr-10
+            bg-transparent
+            text-white
+            text-base
+            border-0
+            border-b-2
+            border-[#FF8E3D]
+            outline-none
+            focus:outline-none
+            focus:ring-0
+          "
+        />
+
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="
+            absolute
+            right-0
+            top-1/2
+            -translate-y-1/2
+            text-[#FF8E3D]
+            cursor-pointer
+          "
+        >
+          {showPassword ? (
+            <EyeSlash size={22} />
+          ) : (
+            <Eye size={22} />
+          )}
+        </button>
+      </div>
+    </div>
+  )}
+/>
 
           {errors.password?.message && (
             <span className="text-red-500 text-sm">
@@ -214,40 +234,59 @@ export function Cadastro() {
             </span>
           )}
 
-          <Controller
-            control={control}
-            name="passwordConfirm"
-            render={({ field }) => (
-              <div className="flex items-center justify-center gap-3 w-full">
-                <Check
-                  size={24}
-                  className="text-[#FF8E3D] shrink-0"
-                />
+         <Controller
+  control={control}
+  name="passwordConfirm"
+  render={({ field }) => (
+    <div className="flex items-center justify-center gap-3 w-full">
+      <Check
+        size={24}
+        className="text-[#FF8E3D] shrink-0"
+      />
 
-                <input
-                  type="password"
-                  placeholder="Confirmar senha"
-                  {...field}
-                  className="
-                    w-60
-                    items-center
-                    justify-center
-                    lg:w-full
-                    py-3
-                    bg-transparent
-                    text-white
-                    text-base
-                    border-0
-                    border-b-2
-                    border-[#FF8E3D]
-                    outline-none
-                    focus:outline-none
-                    focus:ring-0
-                  "
-                />
-              </div>
-            )}
-          />
+      <div className="relative w-60 lg:w-full">
+        <input
+          type={showConfirmacao ? "text" : "password"}
+          placeholder="Confirmar senha"
+          {...field}
+          className="
+            w-full
+            py-3
+            pr-10
+            bg-transparent
+            text-white
+            text-base
+            border-0
+            border-b-2
+            border-[#FF8E3D]
+            outline-none
+            focus:outline-none
+            focus:ring-0
+          "
+        />
+
+        <button
+          type="button"
+          onClick={() => setShowConfirmacao(!showConfirmacao)}
+          className="
+            absolute
+            right-0
+            top-1/2
+            -translate-y-1/2
+            text-[#FF8E3D]
+            cursor-pointer
+          "
+        >
+          {showConfirmacao ? (
+            <EyeSlash size={22} />
+          ) : (
+            <Eye size={22} />
+          )}
+        </button>
+      </div>
+    </div>
+  )}
+/>
 
           {errors.passwordConfirm?.message && (
             <span className="text-red-500 text-sm">

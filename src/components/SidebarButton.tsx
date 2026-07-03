@@ -17,8 +17,8 @@ export function SidebarButton({
     <button
       onClick={onClick}
       className={`
-        flex items-center gap-5
-        text-[24px] py-2 ml-6
+        flex items-center gap-3
+        text-[20px] font-medium py-2
         transition-colors
         ${
           active
